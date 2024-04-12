@@ -35,7 +35,7 @@
                 <div class="mb-3">
                     <input type="password" class="form-control" id="pwd2" name="pwd2">
                     <div class="progress" id="blips">
-                        <div class="progress-bar bg-dark" role="progressbar">
+                        <div class="progress-bar bg-dark" role="progressbar" value="">
                             <span class="sr-only"></span>
                         </div>
                     </div>

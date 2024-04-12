@@ -3,6 +3,9 @@ if (!empty($_GET['page'])) {
     $page = $_GET['page'];
 } else {
     $page = 'index';
+    if (!empty($_SESSION['user_id'])) {
+        $page = 'acceuil';
+    }
 }
 
 $path = "../src/$page.php";
