@@ -11,7 +11,7 @@ const error_pwd = document.querySelector('#error_pwd')
 const error_pwd2 = document.querySelector('#error_pwd2')
 const error_submit = document.querySelector('#error_form')
 const expressionReguliereMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-const expressionReguliereMdp = /[A-Z]+.*[0-9]+.*[^\w]+|[A-Z]+.*[^\w]+.*[0-9]+|[0-9]+.*[A-Z]+.*[^\w]+|[0-9]+.*[^\w]+.*[A-Z]+|[^\w]+.*[A-Z]+.*[0-9]+|[^\w]+.*[0-9]+.*[A-Z]+/
+const expressionReguliereMdp = /^(?=(?:.*[A-Z]){1,})(?=(?:.*[a-z]){1,})(?=(?:.*[\W_]){1,}).{6,}$/
 let erreur
 
 
@@ -32,7 +32,7 @@ mail.addEventListener("blur", function(e){
                 return response.json()
             })
             .then(function(resultat){
-                console.log(resultat)
+
                 if(resultat.nb == 1){
                     error_mail.innerHTML = "Cette adresse mail existe déjà"
                 } else {
@@ -71,38 +71,55 @@ firstname.addEventListener("blur", function(e){
 
 pwd.addEventListener("blur", function(e){ 
 
-    if(expressionReguliereMdp.test(pwd.value) == false){
-        erreur += 1
-        error_pwd.innerHTML = "Le mot de passe renseigner doit contenir entre 8 et 32 carcatères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @,$,€,*,^,§,%,&.";
+    if(pwd.value.length > 0){
 
+        if(expressionReguliereMdp.test(pwd.value) == false){
+            erreur += 1
+            error_pwd.innerHTML = "Le mot de passe renseigner doit contenir entre et 32 carcatères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @,$,€,*,^,§,%,&.";
+    
+        } else {
+            error_pwd.innerHTML = "";
+        }
     } else {
-        error_pwd.innerHTML = "";
+        error_pwd.innerHTML = "Veuillez renseigner un mot de passe"
     }
+
 
 })
 
 pwd2.addEventListener("blur", function(e){
-    if(expressionReguliereMdp.test(pwd2.value) == false){
-        erreur += 1
-        error_pwd2.innerHTML = "Le mot de passe renseigner doit contenir entre 8 et 32 carcatères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @,$,€,*,^,§,%,&.";
 
-    }
-    if(pwd2.value == pwd.value){
-        error_pwd2.innerHTML = "";
-
+    if(pwd2.value.length > 0){
+        if(expressionReguliereMdp.test(pwd2.value) == false){
+            erreur += 1
+            error_pwd2.innerHTML = "Le mot de passe renseigner doit contenir entre 6 et 32 carcatères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @,$,€,*,^,§,%,&.";
+    
+        }
+        if(pwd2.value == pwd.value){
+            error_pwd2.innerHTML = "";
+    
+        } else {
+            erreur += 1
+            error_pwd2.innerHTML = "Les mots de passe ne correspondent pas"
+            
+        }
     } else {
-        erreur += 1
-        error_pwd2.innerHTML = "Les mots de passe ne correspondent pas"
-        
+        error_pwd2.innerHTML = "Veuillez remplir la verification de votre mot de passe"
     }
+
 
 })
 
 
-mySubmit.addEventListener("onsubmit", function(e){
+mySubmit.addEventListener("click", function(e){
     e.preventDefault()
-    error_submit.innerHTML = "Veuillez remplir tout les champs"
+    console.log(erreur)
+    if(mail.value.length === 0 && lastname.value.length === 0 && firstname.value.length === 0 && mail.value.length === 0 && pwd.value.length === 0 && pwd2.value.length === 0){
+        error_submit.innerHTML = "Veuillez remplir les champs requis"
+    } 
     if(erreur === undefined){
         document.querySelector('#form').submit()
     }
+
+
 })

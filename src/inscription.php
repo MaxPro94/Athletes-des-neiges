@@ -38,7 +38,7 @@ if (isset($_POST['submit_inscription'])) {
         $error['pwd2'] = "Votre mot de passe doit contenir au moins 8 caractères";
     }
 
-    if (!preg_match('/[a-zA-Z0-9\!\@\$\€\*\^\§\%\&]{8,32}/', $pwd)) {
+    if (!preg_match('/^((?=.*[A-Z]).*(?=.*[a-z]).*(?=.*[\W_]).{6,})$/', $pwd)) {
         $error['pwd'] = "Le mot de passe renseigner doit contenir entre 8 et 32 carcatères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @,$,€,*,^,§,%,&.";
     }
 
@@ -52,6 +52,8 @@ if (isset($_POST['submit_inscription'])) {
 
 
     if (empty($error)) {
+
+
         $requete = $dbh->prepare("INSERT INTO utilisateur (lastname, firstname, mail, password) VALUES (:lastname, :firstname, :mail, :password)");
         $requete->execute([
             'lastname' => $lastname,
@@ -73,5 +75,7 @@ if (isset($_POST['submit_inscription'])) {
             $_SESSION['name'] = $result_user['lastname'];
             $_SESSION['firstname'] = $result_user['firstname'];
         }
+    } else {
+        var_dump($erreur);
     }
 }

@@ -34,21 +34,20 @@
                 </div>
                 <div class="mb-3">
                     <input type="password" class="form-control" id="pwd2" name="pwd2">
-                    <div class="progress" id="blips">
-                        <div class="progress-bar bg-dark" role="progressbar" value="">
-                            <span class="sr-only"></span>
-                        </div>
-                    </div>
-                    <?php if (!empty($error['pwd'])) : ?>
-                        <span class="text-danger"><?= $error['pwd'] ?></span>
-                    <?php endif; ?>
-                    <?php if (!empty($error['pwd2'])) : ?>
-                        <span class="text-danger"><?= $error['pwd2'] ?></span>
-                    <?php endif; ?>
-                    <span class="text-danger" id="error_pwd"></span><br>
-                    <span class="text-danger" id="error_pwd2"></span><br>
-                    <span class="text-danger" id="error_form"></span>
                 </div>
+                <div class="h-25 my-1 progress" id="background_bar">
+                    <div class="text-center progress-bar progress-bar-striped bg-danger" id="bar" role="progressbar" width="0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+                <?php if (!empty($error['pwd'])) : ?>
+                    <span class="text-danger"><?= $error['pwd'] ?></span>
+                <?php endif; ?>
+                <?php if (!empty($error['pwd2'])) : ?>
+                    <span class="text-danger"><?= $error['pwd2'] ?></span>
+                <?php endif; ?>
+                <span class="text-danger" id="error_pwd"></span><br>
+                <span class="text-danger" id="error_pwd2"></span><br>
+                <span class="text-danger" id="error_form"></span>
                 <hr>
                 <button type="submit" class="btn btn-warning" name="submit_inscription" id="submit_inscription">S'inscrire</button>
                 <hr>
