@@ -53,6 +53,9 @@ if (isset($_POST['submit_inscription'])) {
 
     if (empty($error)) {
 
+        $lastname = htmlspecialchars($lastname);
+        $firstname = htmlspecialChars($firstname);
+
 
         $requete = $dbh->prepare("INSERT INTO utilisateur (lastname, firstname, mail, password) VALUES (:lastname, :firstname, :mail, :password)");
         $requete->execute([
@@ -75,7 +78,5 @@ if (isset($_POST['submit_inscription'])) {
             $_SESSION['name'] = $result_user['lastname'];
             $_SESSION['firstname'] = $result_user['firstname'];
         }
-    } else {
-        var_dump($erreur);
     }
 }

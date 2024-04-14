@@ -1,12 +1,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-5">
-            <h1>Envie de rejoindre la Simon's Team ?</h1>
+            <h1 class="mt-2">Envie de rejoindre la Simon's Team ?</h1>
             <p class="py-2"><small>N'hesite plus et inscrit toi !</small></p>
             <form action="" method="POST" id="form">
                 <div class="mb-3">
                     <label for="Name" class="form-label">Email :</label>
-                    <input type="email" class="form-control" id="mail" name="mail" placeholder="name@example.com">
+                    <div class="d-flex aligns-center">
+                        <input type="email" class="form-control" id="mail" name="mail" placeholder="name@example.com">
+                        <input type="color" class="form-control form-control-color mx-1" value="#563d7c" title="green">
+                    </div>
                     <?php if (!empty($error['mail'])) : ?>
                         <span class="text-danger"><?= $error['mail'] ?></span>
                     <?php endif; ?>
@@ -14,7 +17,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nom :</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname">
+                    <div class="d-flex aligns-center">
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Lastname">
+                        <input type="color" class="form-control form-control-color mx-1" value="#563d7c" title="green">
+                    </div>
                     <?php if (!empty($error['lastname'])) : ?>
                         <span class="text-danger"><?= $error['lastname'] ?></span>
                     <?php endif; ?>
@@ -22,7 +28,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Prénom :</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname">
+                    <div class="d-flex aligns-center">
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Firstname">
+                        <input type="color" class="form-control form-control-color mx-1" value="#563d7c" title="green">
+                    </div>
                     <?php if (!empty($error['firstname'])) : ?>
                         <span class="text-danger"><?= $error['firstname'] ?></span>
                     <?php endif; ?>
@@ -49,11 +58,13 @@
                 <span class="text-danger" id="error_pwd2"></span><br>
                 <span class="text-danger" id="error_form"></span>
                 <hr>
-                <button type="submit" class="btn btn-warning" name="submit_inscription" id="submit_inscription">S'inscrire</button>
-                <hr>
-                <div>
-                    <p class="my-2">Vous avez déjà un compte ?</p>
-                    <a href="?page=index" class="btn btn-warning">Se connecter</a>
+                <div class="d-flex aligns-center justify-content-between">
+                    <button type="submit" class="btn btn-warning" name="submit_inscription" id="submit_inscription">S'inscrire</button>
+                    <input type="hidden" name="submit_inscription">
+                    <div class="d-flex aligns-center">
+                        <p class="my-2 mx-2">Vous avez déjà un compte ?</p>
+                        <a href="?page=index" class="btn btn-warning">Se connecter</a>
+                    </div>
                 </div>
             </form>
         </div>

@@ -10,18 +10,38 @@ const error_firstname = document.querySelector('#error_firstname')
 const error_pwd = document.querySelector('#error_pwd')
 const error_pwd2 = document.querySelector('#error_pwd2')
 const error_submit = document.querySelector('#error_form')
+const check_color = document.querySelectorAll("input[title]")
 const expressionReguliereMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 const expressionReguliereMdp = /^(?=(?:.*[A-Z]){1,})(?=(?:.*[a-z]){1,})(?=(?:.*[\W_]){1,}).{6,}$/
-let erreur
+let validation = 0
+let check_mail = 0
+let check_lastname = 0
+let check_firstname = 0
 
+check_color.forEach(function(input) {
+    input.addEventListener("click", function(e){
+        e.preventDefault()
+        input.setAttribute("data-bs-toggle", "popover")
+        input.setAttribute("data-bs-title", "Popover")
+        input.setAttribute("data-bs-content", "popover")
+    })
+    if(check_mail === 0){
+        input.setAttribute("value", "#198754");
+    }
+
+    if(check_lastname === 1){
+        input.setAttribute("value", "#198754");
+    }
+
+    if(check_lastname === 0){
+        input.setAttribute("value", "#dc3545");
+    }
+})
 
 
 mail.addEventListener("blur", function(e){
     if(mail.value.trim().length == 0){
         error_mail.innerHTML = "Le champs e-mail est obligatoire";
-        console.log(erreur)
-        erreur += 1
-
 
     } else {
 
@@ -36,11 +56,12 @@ mail.addEventListener("blur", function(e){
                 if(resultat.nb == 1){
                     error_mail.innerHTML = "Cette adresse mail existe déjà"
                 } else {
+                    
+                    validation += 1
                     error_mail.innerHTML = ""
                 }
             })
         } else {
-            erreur += 1
             error_mail.innerHTML = "L'adresse mail n'est pas valide";
         }
     }
@@ -48,11 +69,11 @@ mail.addEventListener("blur", function(e){
 
 lastname.addEventListener("blur", function(e){
     if(lastname.value.trim().length <= 1){
-        erreur += 1
         error_lastname.innerHTML = "Le nom doit comporter plus d'une lettre";
 
 
     } else {
+        validation += 1
         error_lastname.innerHTML = "";
     }
     
@@ -60,9 +81,9 @@ lastname.addEventListener("blur", function(e){
 
 firstname.addEventListener("blur", function(e){
     if(firstname.value.trim().length <= 1){
-        erreur += 1
         error_firstname.innerHTML = "Le prénom doit comporter plus d'une lettre";
     } else {
+        validation += 1
         error_firstname.innerHTML = "";
     }
 
@@ -74,10 +95,10 @@ pwd.addEventListener("blur", function(e){
     if(pwd.value.length > 0){
 
         if(expressionReguliereMdp.test(pwd.value) == false){
-            erreur += 1
             error_pwd.innerHTML = "Le mot de passe renseigner doit contenir entre et 32 carcatères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @,$,€,*,^,§,%,&.";
     
         } else {
+            validation += 1
             error_pwd.innerHTML = "";
         }
     } else {
@@ -91,15 +112,14 @@ pwd2.addEventListener("blur", function(e){
 
     if(pwd2.value.length > 0){
         if(expressionReguliereMdp.test(pwd2.value) == false){
-            erreur += 1
             error_pwd2.innerHTML = "Le mot de passe renseigner doit contenir entre 6 et 32 carcatères avec des minuscules, des MAJUSCULES et des caractères spéciaux comme @,$,€,*,^,§,%,&.";
     
         }
         if(pwd2.value == pwd.value){
+            validation += 1
             error_pwd2.innerHTML = "";
     
         } else {
-            erreur += 1
             error_pwd2.innerHTML = "Les mots de passe ne correspondent pas"
             
         }
@@ -110,16 +130,16 @@ pwd2.addEventListener("blur", function(e){
 
 })
 
-
 mySubmit.addEventListener("click", function(e){
     e.preventDefault()
-    console.log(erreur)
-    if(mail.value.length === 0 && lastname.value.length === 0 && firstname.value.length === 0 && mail.value.length === 0 && pwd.value.length === 0 && pwd2.value.length === 0){
-        error_submit.innerHTML = "Veuillez remplir les champs requis"
-    } 
-    if(erreur === undefined){
-        document.querySelector('#form').submit()
+    if(validation < 6){
+        error_submit.innerHTML = "Veuillez remplir tout  les champs requis"
+    } else {
+        if(validation == 6){
+            document.querySelector('#form').submit()
+        }
     }
 
-
 })
+
+
