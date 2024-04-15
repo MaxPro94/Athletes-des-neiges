@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-5">
-            <h1 class="my-3">Envie de rejoindre la Simon's Team ?</h1>
-            <p class="py-1 px-2"><small>N'hesite plus et inscrit toi !</small></p>
+            <h1 class="my-3 text-white">Envie de rejoindre la Simon's Team ?</h1>
+            <p class="py-1 px-2 text-white"><small>N'hesite plus et inscrit toi !</small></p>
             <form action="" method="POST" id="form" class="p-4 border rounded mt-3 bg-dark text-white">
                 <div class="mb-3">
                     <label for="Name" class="form-label mx-3">Email :</label>

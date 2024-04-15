@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 mt-5">
-            <h1 class="mt-4">Bienvenue sur Simon's Team.org</h1>
-            <p class="mb-5"><small>Merci de vous connecter pour accéder au site.</small></p>
+            <h1 class="mt-4 text-white">Bienvenue sur Simon's Team.org</h1>
+            <p class="mb-5 text-white"><small>Merci de vous connecter pour accéder au site.</small></p>
             <form action="" method="POST" class="border rounded p-4 bg-dark text-white my-3">
                 <div class="mb-3">
                     <label for="Name" class="form-label">Email :</label>
