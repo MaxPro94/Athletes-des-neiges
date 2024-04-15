@@ -10,7 +10,7 @@
                         <input type="email" class="form-control" id="mail" name="mail" placeholder="name@example.com" required>
                         <input type="color" id="color_mail" class="form-control form-control-color mx-1 " value="#f8f9fa" title="green">
                     </div>
-                    <div id="emailHelp" class="form-text">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
+                    <div id="emailHelp" class="form-text text-secondary">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
                     <?php if (!empty($error['mail'])) : ?>
                         <span class="text-danger"><?= $error['mail'] ?></span>
                     <?php endif; ?>
@@ -49,7 +49,7 @@
                     <div class="text-center progress-bar progress-bar-striped bg-danger" id="bar" role="progressbar" width="0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                     </div>
                 </div>
-                <div id="pwdHelp" class="form-text">Votre mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un caractère spécial et être d'au moins 6 caractères de long.</div>
+                <div id="pwdHelp" class="form-text text-secondary">Votre mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un caractère spécial et être d'au moins 6 caractères de long.</div>
                 <?php if (!empty($error['pwd'])) : ?>
                     <span class="text-danger"><?= $error['pwd'] ?></span>
                 <?php endif; ?>

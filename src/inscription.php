@@ -55,6 +55,7 @@ if (isset($_POST['submit_inscription'])) {
 
         $lastname = htmlspecialchars($lastname);
         $firstname = htmlspecialChars($firstname);
+        $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
 
 
         $requete = $dbh->prepare("INSERT INTO utilisateur (lastname, firstname, mail, password) VALUES (:lastname, :firstname, :mail, :password)");
