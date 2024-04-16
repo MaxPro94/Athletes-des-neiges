@@ -39,10 +39,10 @@
 }
 
 .link-warning {
-  color: #ffc107;
+  color: #d3b88c;
 }
 .link-warning:hover, .link-warning:focus {
-  color: #ffcd39;
+  color: #dcc6a3;
 }
 
 .link-danger {
@@ -437,7 +437,7 @@
 }
 
 .border-warning {
-  border-color: #ffc107 !important;
+  border-color: #d3b88c !important;
 }
 
 .border-danger {
@@ -1266,7 +1266,7 @@
 }
 
 .text-warning {
-  color: #ffc107 !important;
+  color: #d3b88c !important;
 }
 
 .text-danger {
@@ -1322,7 +1322,7 @@
 }
 
 .bg-warning {
-  background-color: #ffc107 !important;
+  background-color: #d3b88c !important;
 }
 
 .bg-danger {
